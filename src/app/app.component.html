@@ -3,3 +3,8 @@
     o nome da pessoa e {{ nome }}, esta na posição {{ i + 1 }} 
   </li>
 </ul>
+
+<p *ngIf="nomes.length == 0">nenhum nome encontrado, usando ngIf</p>
+<p [hidden]="nomes.length > 0">nenhum nome encontrado, usando hidden</p>
+
+<!-- <input #box placeholder="digite um nome" (keyup)="buscar(box.value)"> -->
