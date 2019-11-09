@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-root',
@@ -6,15 +6,19 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'projetinho-legal';
     nomes: string[] = ['joao', 'pedro', 'camila', 'andre'];
     nomesFiltrados: string[];
 
+    ngOnInit() {
+        this.nomesFiltrados = this.nomes;
+    }
+
     buscar(valor: string ) {
         const temp = [];
         this.nomes.forEach(nome => {
-            if (nome.toLowerCase().includes(valor.toLowerCase()) {
+            if (nome.toLowerCase().includes(valor.toLowerCase())) {
                 temp.push(nome);
             }
         });
