@@ -1,10 +1,31 @@
+<input #box placeholder="digite um nome" (keyup)="buscar(box.value)">
+<input [style.display]="'block'" #boxId placeholder="digite um id" (keyup)="buscarId(boxId.value)">
+<input [style.display]="'block'" #criterio placeholder="digite um criterio" (keyup)="resposta = buscaCampos(criterio.value)">
+
+<ul *ngFor="let r of resposta">
+  <li>{{ r.id }} - {{ r.nome }} - {{ r.salario }}</li>
+</ul>
+
+<p *ngIf="pessoaBuscada">{{ pessoaBuscada.id + " - " + pessoaBuscada.nome }}</p>
+
 <ul>
   <li *ngFor="let nome of nomesFiltrados, let i = index">
     o nome da pessoa e {{ nome }}, esta na posição {{ i + 1 }} 
   </li>
 </ul>
 
-<p *ngIf="nomes.length == 0">nenhum nome encontrado, usando ngIf</p>
-<p [hidden]="nomes.length > 0">nenhum nome encontrado, usando hidden</p>
+<p *ngIf="pessoas.length == 0">nenhum nome encontrado, usando ngIf</p>
+<p [hidden]="pessoas.length > 0">nenhum nome encontrado, usando hidden</p>
 
-<input #box placeholder="digite um nome" (keyup)="buscar(box.value)">
+<p>Salario total: {{getValorTotal()}}</p>
+<div>
+  <input #percentual placeholder="digite o percentual do aumento">
+  <button (click)="raise(percentual.value)">Aumentar o salario</button>
+</div>
+<button (click)="enviar(box.value)">enviar</button>
+
+<p *ngIf="checkSalary(500);else check">Todos ganham mais que 500</p>
+<ng-template #check>
+  Algumas pessoas podem ou nao ganhar mais que 500
+</ng-template>
+  
