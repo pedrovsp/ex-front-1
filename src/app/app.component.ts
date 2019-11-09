@@ -16,12 +16,6 @@ export class AppComponent implements OnInit {
     }
 
     buscar(valor: string ) {
-        const temp = [];
-        this.nomes.forEach(nome => {
-            if (nome.toLowerCase().includes(valor.toLowerCase())) {
-                temp.push(nome);
-            }
-        });
-        this.nomesFiltrados = temp;
+        this.nomesFiltrados = this.nomes.filter(nome => nome.toLowerCase().includes(valor.toLowerCase()));
     }
 }
